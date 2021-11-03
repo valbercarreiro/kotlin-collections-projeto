@@ -2,28 +2,51 @@ package br.com.alura
 
 fun main() {
 
-    val assistiramCursoAndroid: Set<String> = setOf<String>("Alex", "Fran", "Gui", "Maria")
-    val assistiramcursoKotlin: Set<String> = setOf<String>("Alex", "Paulo", "Maria")
-    val assistiramAmbos: MutableSet<String> = mutableSetOf()
-    assistiramAmbos.addAll(assistiramCursoAndroid)
-    assistiramAmbos.addAll(assistiramcursoKotlin)
+    val pedidos = mapOf<Int, Double>(Pair(1, 20.0), Pair(2, 34.0), 3 to 50.0)
+    println(pedidos)
 
-    println(assistiramAmbos.distinct())
-    println()
+    val pedido = pedidos[3]
+    pedido?.let {
+        println("pedido $pedido")
+    }
 
-    println(assistiramcursoKotlin - assistiramCursoAndroid)
-    println(assistiramcursoKotlin subtract assistiramCursoAndroid)
-    println()
+    for (p: Map.Entry<Int, Double> in pedidos) {
+        println("número do pedido: ${p.key}")
+        println("valor do pedido: ${p.value}")
+    }
 
-    println(assistiramcursoKotlin + assistiramCursoAndroid)
-    println(assistiramcursoKotlin union assistiramCursoAndroid)
-    println()
+    var pedidosMutaveis = mutableMapOf<Int, Double>(Pair(1, 20.0), Pair(2, 34.0), 3 to 50.0)
+    println(pedidosMutaveis)
 
-    println(assistiramcursoKotlin intersect assistiramCursoAndroid)
+    val pedido2 = pedidosMutaveis[3]
+    pedido2?.let {
+        println("pedido $pedido2")
+    }
 
-    val assistiramList = assistiramAmbos.toMutableList()
-    assistiramList.add("Alex")
-    println(assistiramList)
-    println(assistiramList.toSet())
+    for (p: Map.Entry<Int, Double> in pedidosMutaveis) {
+        println("número do pedido: ${p.key}")
+        println("valor do pedido: ${p.value}")
+    }
 
+    pedidosMutaveis[4] = 70.0
+    pedidosMutaveis.put(5, 80.0)
+    println(pedidosMutaveis)
+
+    pedidosMutaveis[1] = 100.0
+    println(pedidosMutaveis)
+
+    pedidosMutaveis.putIfAbsent(6, 200.0)
+    println(pedidosMutaveis)
+
+    pedidosMutaveis.putIfAbsent(6, 300.0)
+    println(pedidosMutaveis)
+
+    pedidosMutaveis.remove(6)
+    println(pedidosMutaveis)
+
+    pedidosMutaveis.remove(3, 100.0)
+    println(pedidosMutaveis)
+
+    pedidosMutaveis.remove(3, 50.0)
+    println(pedidosMutaveis)
 }
